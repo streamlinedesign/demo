@@ -372,10 +372,11 @@ html:has(#fullview[open]) {
         display: none;
     }
 
-    /* the menu itself, cropped at the bottom; no shadows on mobile */
+    /* the menu itself, cut off cleanly, with the button on its own strip
+       underneath: no fade or shadow around the button */
     .menu-card {
-        position: relative;
-        display: block;
+        display: flex;
+        flex-direction: column;
         height: 64svh;
         overflow: hidden;
         border: var(--border-width) solid var(--border);
@@ -383,17 +384,17 @@ html:has(#fullview[open]) {
     }
 
     .menu-card .screen {
-        height: 100%;
+        flex: 1;
+        min-height: 0;
         overflow-y: auto;
-        -webkit-mask-image: linear-gradient(#000 80%, transparent);
-        mask-image: linear-gradient(#000 80%, transparent);
     }
 
     .menu-card .btn {
-        position: absolute;
-        bottom: var(--space-4);
-        left: 50%;
-        transform: translateX(-50%);
+        flex: none;
+        margin: 0;
+        border-radius: 0;
+        height: 44px;
+        box-shadow: none;
     }
 
     #to-preview {
