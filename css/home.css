@@ -116,91 +116,268 @@
     scroll-margin-top: var(--space-4);
 }
 
-.package-grid {
+/* calculator: options on the left, the running total on the right */
+.calc {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr minmax(280px, 380px);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    line-height: var(--line-height);
+    overflow: hidden;
+}
+
+.calc-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border-bottom: var(--border-width) solid var(--border);
+    transition: background-color var(--duration);
+}
+
+.calc-row:last-child {
+    border-bottom: 0;
+}
+
+label.calc-row {
+    cursor: pointer;
+}
+
+label.calc-row:hover {
+    background: var(--muted);
+}
+
+label.calc-row:has(input:disabled) {
+    cursor: default;
+    background: none;
+}
+
+.calc-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+}
+
+.calc-title {
+    font-size: var(--text-lg);
+}
+
+.calc-price,
+.calc-includes {
+    color: var(--accent);
+    font-size: var(--text-sm);
+}
+
+.calc-includes,
+.plan ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-top: var(--space-2);
+    padding-left: 1.1em;
+    list-style: disc;
+}
+
+/* support: one-time or monthly, two cards side by side */
+.calc-plan-row {
+    flex-direction: column;
+    align-items: stretch;
     gap: var(--space-4);
 }
 
-.card,
+.plans {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: border-color var(--duration), background-color var(--duration);
+}
+
+.plan:hover {
+    border-color: var(--fg);
+}
+
+.plan:has(input:checked) {
+    border-color: var(--fg);
+    background: var(--muted);
+}
+
+.plan:has(input:focus-visible) {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+}
+
+.plan-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.plan-name {
+    font-size: var(--text-lg);
+}
+
+.plan-head input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--fg);
+    cursor: inherit;
+}
+
+.plan-tag,
+.plan-fit {
+    color: var(--accent);
+}
+
+.plan ul {
+    flex: 1;
+    margin-bottom: var(--space-2);
+}
+
+/* the lead of each point in the text color, the rest in grey */
+.plan li {
+    color: var(--accent);
+}
+
+.plan b {
+    color: var(--fg);
+    font-weight: var(--weight-medium);
+}
+
+.plan-fit {
+    padding-top: var(--space-2);
+    border-top: var(--border-width) solid var(--border);
+}
+
+.calc-check {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--fg);
+    cursor: inherit;
+}
+
+.stepper {
+    flex: none;
+    display: flex;
+    gap: var(--space-1);
+}
+
+.stepper .btn {
+    width: 40px;
+    height: 40px;
+    font-size: var(--text-lg);
+}
+
+.stepper .input {
+    width: 64px;
+    text-align: center;
+    font-size: var(--text-md);
+    -moz-appearance: textfield;
+}
+
+.stepper .input::-webkit-inner-spin-button,
+.stepper .input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.calc-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    border-left: var(--border-width) solid var(--border);
+    background: var(--muted);
+}
+
+.calc-summary h4 {
+    font-size: var(--text-xl);
+}
+
+.calc-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+}
+
+.calc-lines li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.calc-lines li > span:last-child {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.calc-empty {
+    color: var(--accent);
+}
+
+.calc-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: var(--space-3);
+    border-top: var(--border-width) solid currentColor;
+    font-size: var(--text-lg);
+}
+
+.calc-total output {
+    font-size: var(--text-xl);
+    font-variant-numeric: tabular-nums;
+}
+
+/* free demo and inquiry share one card look and hover */
 .split-item {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
     padding: var(--space-5);
     line-height: var(--line-height);
-}
-
-/* packages, free demo and inquiry all share one card look and hover */
-.card,
-.split-item {
     border: var(--border-width) solid var(--border);
     border-radius: var(--radius);
     transition: border-color var(--duration), transform var(--duration) var(--ease);
 }
 
-.card:hover,
 .split-item:hover {
     border-color: var(--fg);
     transform: translateY(-2px);
 }
 
 /* hovering a card fills its outline button */
-.card:hover .btn,
 .split-item:hover .btn-outline {
     background: var(--fg);
     border-color: var(--fg);
     color: var(--bg);
 }
 
-.card-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-3);
-}
-
-.card h4 {
-    font-size: var(--text-xl);
-}
-
-.card-price {
-    color: var(--fg) !important;
-    white-space: nowrap;
-    font-size: var(--text-lg);
-}
-
-.card p,
 .split-item p {
     color: var(--accent);
 }
 
-.card ul {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    margin-bottom: var(--space-2);
-    padding-top: var(--space-3);
-    border-top: var(--border-width) solid var(--border);
-}
-
-.card ul > li::before {
-    content: "— ";
-}
-
-/* the three magnets under "brendiranih magneta" */
-.card ol {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    margin-top: var(--space-1);
-    padding-left: 2.6em;
-    list-style: decimal;
-    color: var(--accent);
-}
-
-.card .btn,
 .split-item .btn {
     align-self: flex-start;
 }
@@ -283,10 +460,6 @@
 /* ---------- mobile ---------- */
 
 @media (max-width: 860px) {
-    .hide-mobile {
-        display: none;
-    }
-
     #landing {
         --stage-h: clamp(250px, 40svh, 380px);
         justify-content: flex-start;
@@ -342,9 +515,36 @@
         box-shadow: none;
     }
 
-    .package-grid,
     .split {
         grid-template-columns: 1fr;
+    }
+
+    .calc {
+        grid-template-columns: 1fr;
+    }
+
+    .calc-summary {
+        border-left: 0;
+        border-top: var(--border-width) solid var(--border);
+    }
+
+    .calc-summary .btn {
+        align-self: stretch;
+    }
+
+    .plans {
+        grid-template-columns: 1fr;
+    }
+
+    /* the stepper goes under the set's description */
+    .calc-row:has(.stepper) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-4);
+    }
+
+    .stepper .input {
+        flex: 1;
     }
 
     /* free demo is just text and a button on mobile */

@@ -124,21 +124,58 @@ h4 {
     gap: var(--space-4);
 }
 
+/* light/dark switch: both icons sit in one cell and swap with a quarter turn */
 #theme {
     display: grid;
     place-items: center;
     width: 40px;
     height: 40px;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--duration);
 }
 
-/* show the icon you'd switch to */
+#theme:hover {
+    background: var(--muted);
+}
+
+#theme:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+}
+
+#theme svg {
+    grid-area: 1 / 1;
+    transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+
 .moon,
 :root[data-theme="dark"] .sun {
-    display: none;
+    opacity: 0;
+    transform: rotate(90deg) scale(.5);
 }
 
 :root[data-theme="dark"] .moon {
-    display: block;
+    opacity: 1;
+    transform: none;
+}
+
+/* while the theme changes, every color lands at once instead of each
+   element easing at its own speed; only the switch's icons animate */
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+    transition: none !important;
+}
+
+.theme-switching #theme svg {
+    transition: opacity .3s var(--ease), transform .3s var(--ease) !important;
+}
+
+/* browsers with view transitions cross-fade the whole page */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: .3s;
+    animation-timing-function: var(--ease);
 }
 
 /* ---------- section heading ---------- */
