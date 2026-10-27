@@ -41,11 +41,6 @@
     align-self: flex-start;
 }
 
-/* name and themes on top, the explanation and the button under them */
-.hero-controls .eyebrow {
-    margin-top: var(--space-4);
-}
-
 .eyebrow {
     display: inline-flex;
     align-items: center;

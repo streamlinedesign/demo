@@ -372,7 +372,7 @@ html:has(#fullview[open]) {
         display: none;
     }
 
-    /* the menu itself, cropped at the bottom, on a soft shadow */
+    /* the menu itself, cropped at the bottom; no shadows on mobile */
     .menu-card {
         position: relative;
         display: block;
@@ -394,7 +394,6 @@ html:has(#fullview[open]) {
         bottom: var(--space-4);
         left: 50%;
         transform: translateX(-50%);
-        box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .5);
     }
 
     #to-preview {
@@ -403,7 +402,6 @@ html:has(#fullview[open]) {
         bottom: var(--space-4);
         z-index: 10;
         display: inline-flex;
-        box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .5);
         opacity: 0;
         pointer-events: none;
         transition: opacity var(--duration);
