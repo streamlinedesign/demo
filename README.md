@@ -16,7 +16,7 @@ straight from disk mostly works too, but exports are more reliable from a server
 
 ## Pages
 
-- `index.html`: the homepage, with a live demo, the packages, the free demo and the inquiry form.
+- `index.html`: the homepage, with a live demo, the price calculator, the free demo and the inquiry form.
 - `demo.html`: the menu builder. It has logo, name, theme, accent color, categories and items,
   contact and opening hours, a QR code, and exports.
 
@@ -32,6 +32,7 @@ carries the name and theme into it.
 | Menu themes (Dan, Noć, Craft) | `css/menu.css`, one variable block per theme |
 | Theme names visitors see | `THEMES` in `js/menu.js` |
 | Menu font files | `css/fonts.css`, `fonts/` |
+| Calculator prices and starting values | `PRICES` and `DEFAULTS` in `js/home.js` |
 | Starting menu | `js/default-menu.js` |
 | Contact email for inquiries | `CONTACT_EMAIL` in `js/menu.js` |
 | Your website, linked from exported menus | `SITE_URL` in `js/menu.js` |
