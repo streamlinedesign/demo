@@ -1,0 +1,163 @@
+/* Unused leftovers from the first version (chocolate gallery, galaxy, comets).
+   Not linked from any page. Add <link rel="stylesheet" href="css/legacy.css"> to bring them back. */
+
+#chocolate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 64px;
+    gap: 32px;
+}
+
+#chocolate img {
+    max-height: 670px;
+    width: auto;
+    border: 2px solid;
+}
+
+
+@media (max-width: 720px) {
+    #chocolate {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 12px;
+        gap: 32px;
+        max-width: 100dvw;
+        overflow-x: scroll;
+    }
+
+    #chocolate img {
+        max-height: 400px;
+        width: auto;
+        border: 2px solid;
+    }
+}
+
+
+#galaxy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    position: absolute; 
+    top: 650px; 
+    left: 0;
+}
+
+#galaxy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    position: absolute; 
+    top: 650px; 
+    left: 0;
+    background:  radial-gradient(circle at center bottom, transparent 90%, rgba(0, 0, 0, 0.7) 90%) no-repeat,
+    linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.7) 30%);
+}
+
+#comets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    transform: rotateY(180deg);
+    pointer-events: none;
+
+
+}
+
+#comets i {
+    display: inline-block;
+    width: 250px;
+    height: 150px;
+    position: absolute;
+    border-radius: 5% 40% 70%;
+    box-shadow: inset 0px 0px 1px #294b67;
+    border: 1px solid #333;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+#comets i {
+    animation: falling2 18s 1s infinite;
+    height: 70px;
+    width: 4px;
+    background: linear-gradient( light-dark(#050505, #fffabd),  light-dark(#050505, #fffabd),  light-dark(#050505, #fffabd), #22416e, transparent);
+    border-radius: 50%;
+}
+
+#comets i:nth-child(1) {
+    top: 35vh;
+    left: 2vw;
+    animation-delay: 9s;
+}
+
+#comets i:nth-child(2) {
+    top: 5vh;
+    left: 45vw;
+    animation-delay: 11.25s;
+}
+
+#comets i:nth-child(3) {
+    top: 2vh;
+    left: 2vw;
+    animation-delay: 14.5s;
+}
+
+#comets i:nth-child(4) {
+    top: 7vh;
+    left: 75vw;
+    animation-delay: 17.75s;
+}
+
+
+@-webkit-keyframes falling2 {
+    0% {
+        opacity: 0.8;
+
+        -webkit-transform: translate3d(100px, 0, 0) rotate(130deg);
+        transform: translate3d(100px, 0, 0) rotate(130deg);
+    }
+
+
+    5% {
+        -webkit-transform: translate3d(800px, 580px, 0) rotate(130deg);
+        transform: translate3d(800px, 580px, 0) rotate(130deg);
+        opacity: 0;
+
+
+    }
+
+    6% {
+        -webkit-transform: translate3d(800px, 680px, 0) rotate(180deg);
+        transform: translate3d(900px, 780px, 0) rotate(180deg);
+        opacity: 0;
+    }
+    7% {
+        -webkit-transform: translate3d(800px, 680px, 0) rotate(180deg);
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.filter-green {
+
+
+filter: brightness(0) saturate(100%) invert(92%) sepia(20%) saturate(569%) hue-rotate(342deg) brightness(105%) contrast(105%);
+}
+

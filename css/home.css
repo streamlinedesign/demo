@@ -1,0 +1,390 @@
+/* =========================================================
+   Homepage: landing with live demo, packages, free demo, inquiry.
+   Desktop and mobile differ at 860px (see the bottom of the file).
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- landing (desktop) ---------- */
+
+#landing {
+    --stage-h: clamp(420px, 64svh, 680px);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
+}
+
+.hero-demo {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) 1fr;
+    align-items: start;
+    gap: var(--space-8);
+}
+
+.hero-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.hero-controls .btn {
+    align-self: flex-start;
+}
+
+/* name and themes on top, the explanation and the button under them */
+.hero-controls .eyebrow {
+    margin-top: var(--space-4);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 1.6s var(--ease) infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .25; }
+}
+
+.hero-lead {
+    color: var(--accent);
+    font-size: var(--text-md);
+    line-height: var(--line-height);
+}
+
+.hero-stage {
+    position: relative;
+}
+
+.hero-stage .laptop {
+    width: min(100%, calc(var(--stage-h) * var(--monitor-ratio)));
+    aspect-ratio: var(--monitor-ratio);
+    margin-left: auto;
+}
+
+.hero-stage .phone {
+    display: none;
+}
+
+/* slogan + the three lines under it */
+
+#hero-title {
+    padding-bottom: var(--space-3);
+    border-bottom: var(--border-width) solid currentColor;
+}
+
+#list {
+    display: flex;
+    align-items: stretch;
+}
+
+#list > div {
+    padding: var(--space-3) var(--space-5) 0 0;
+    margin-right: var(--space-5);
+    border-right: var(--border-width) solid var(--border);
+    color: var(--accent);
+    font-size: var(--text-md);
+    font-weight: var(--weight-regular);
+    line-height: 1.4;
+}
+
+#list > div:last-child {
+    margin-right: 0;
+    border-right: none;
+}
+
+/* ---------- packages ---------- */
+
+#packages {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    scroll-margin-top: var(--space-4);
+}
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+}
+
+.card,
+.split-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    line-height: var(--line-height);
+}
+
+/* packages, free demo and inquiry all share one card look and hover */
+.card,
+.split-item {
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--duration), transform var(--duration) var(--ease);
+}
+
+.card:hover,
+.split-item:hover {
+    border-color: var(--fg);
+    transform: translateY(-2px);
+}
+
+/* hovering a card fills its outline button */
+.card:hover .btn,
+.split-item:hover .btn-outline {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+}
+
+.card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.card h4 {
+    font-size: var(--text-xl);
+}
+
+.card-price {
+    color: var(--fg) !important;
+    white-space: nowrap;
+    font-size: var(--text-lg);
+}
+
+.card p,
+.split-item p {
+    color: var(--accent);
+}
+
+.card ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: var(--border-width) solid var(--border);
+}
+
+.card ul > li::before {
+    content: "— ";
+}
+
+/* the three magnets under "brendiranih magneta" */
+.card ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-top: var(--space-1);
+    padding-left: 2.6em;
+    list-style: decimal;
+    color: var(--accent);
+}
+
+.card .btn,
+.split-item .btn {
+    align-self: flex-start;
+}
+
+/* free demo + inquiry row */
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.split-item h4 {
+    font-size: var(--text-xl);
+}
+
+.free-demo {
+    overflow: hidden;  /* the phone peeks out of the card's bottom edge */
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--space-5);
+    padding-bottom: 0;
+}
+
+.free-demo-text .btn {
+    margin-top: auto;  /* button sits on the card's bottom edge */
+}
+
+.free-demo-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+    padding-bottom: var(--space-5);
+}
+
+/* light-theme phone peeking up out of the bottom edge, like the mobile landing */
+.free-demo-stage {
+    position: relative;
+    flex: none;
+    align-self: flex-end;
+    width: min(260px, 45%);
+    height: 340px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(#000 70%, transparent);
+    mask-image: linear-gradient(#000 70%, transparent);
+}
+
+.free-demo-stage .phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 520px;
+    box-shadow: none;
+}
+
+#inquiry {
+    scroll-margin-top: var(--space-4);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1100px) {
+    .hero-demo {
+        grid-template-columns: minmax(240px, 300px) 1fr;
+        gap: var(--space-6);
+    }
+
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 860px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    #landing {
+        --stage-h: clamp(250px, 40svh, 380px);
+        justify-content: flex-start;
+        min-height: calc(100svh - var(--header-height));
+        gap: var(--space-5);
+        padding-top: var(--space-4);
+    }
+
+    .hero-demo {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .hero-controls {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--space-3);
+    }
+
+    .hero-controls .field {
+        grid-column: 1 / -1;
+    }
+
+    .eyebrow {
+        display: none;
+    }
+
+    .hero-lead,
+    .hero-stage .laptop {
+        display: none;
+    }
+
+    .hero-controls .btn {
+        align-self: stretch;
+    }
+
+    /* phone peeks up from the bottom of the stage */
+    .hero-stage {
+        height: var(--stage-h);
+        -webkit-mask-image: linear-gradient(#000 75%, transparent);
+        mask-image: linear-gradient(#000 75%, transparent);
+        overflow: hidden;
+    }
+
+    .hero-stage .phone {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 50%;
+        width: min(280px, 72vw);
+        height: calc(var(--stage-h) + 40px);
+        transform: translateX(50%);
+        box-shadow: none;
+    }
+
+    .package-grid,
+    .split {
+        grid-template-columns: 1fr;
+    }
+
+    /* free demo is just text and a button on mobile */
+    .free-demo-stage {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero-controls {
+        grid-template-columns: 1fr;
+    }
+
+    #landing {
+        --stage-h: clamp(240px, 36svh, 360px);
+    }
+
+    #list {
+        width: 100%;
+    }
+
+    #list > div {
+        font-size: var(--text-sm);
+    }
+
+    #list > div:nth-child(2) {
+        margin-right: 0;
+        border-right: none;
+    }
+
+    #list > div:last-child {
+        display: none;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
